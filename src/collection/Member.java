@@ -1,12 +1,14 @@
 package collection;
 
 import java.util.Collection;
+import java.util.Comparator;
 
-public class Member {
+public class Member implements Comparable<Member>, Comparator<Member> {
 
     private int memberId;
     private String memberName;
 
+    public Member() {}
     public Member(int memberId, String memberName) {
         this.memberId = memberId;
         this.memberName = memberName;
@@ -45,6 +47,17 @@ public class Member {
                 return true;
             else return false;
         } return false;
+    }
+
+    @Override
+    public int compareTo(Member member) {
+
+        //return this.memberId - member.memberId;
+        //return (this.memberId - member.memberId)*(-1); 내림차순
+        return (this.memberName.compareTo(member.memberName))*(-1);
+    }
+    public int compare(Member mem1, Member mem2) {
+        return mem1.memberId - mem2.memberId;
     }
 }
 
